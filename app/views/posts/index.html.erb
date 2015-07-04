@@ -1,0 +1,37 @@
+<h1>Listing posts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Going from</th>
+      <th>Going to</th>
+      <th>Time</th>
+      <th>Date</th>
+      <th>Phone number</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.going_from %></td>
+        <td><%= post.going_to %></td>
+        <td><%= post.time %></td>
+        <td><%= post.date %></td>
+        <td><%= post.phone_number %></td>
+        <td><%= post.user %></td>
+        <td><%= link_to 'Show', post %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>
