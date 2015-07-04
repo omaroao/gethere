@@ -1,39 +1,34 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Post -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Post %></h1>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:title) %></dt>
+      <dd><pre class="prettyprint"><%= @post.title %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:going_from) %></dt>
+      <dd><pre class="prettyprint"><%= @post.going_from %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:going_to) %></dt>
+      <dd><pre class="prettyprint"><%= @post.going_to %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:time) %></dt>
+      <dd><pre class="prettyprint"><%= @post.time %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:date) %></dt>
+      <dd><pre class="prettyprint"><%= @post.date %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:phone_number) %></dt>
+      <dd><pre class="prettyprint"><%= @post.phone_number %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Going from:</strong>
-  <%= @post.going_from %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              posts_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_post_path(@post), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              post_path(@post),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Going to:</strong>
-  <%= @post.going_to %>
-</p>
-
-<p>
-  <strong>Time:</strong>
-  <%= @post.time %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @post.date %>
-</p>
-
-<p>
-  <strong>Phone number:</strong>
-  <%= @post.phone_number %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @post.user %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
