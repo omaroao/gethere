@@ -6,8 +6,11 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'posts#index'
-
+    root 'covers#index'
+    get 'posts' => "posts#index"
+    get 'about' => "about#index_about"
+    get 'index' => 'covers#index'
+    get 'contact' => 'covers#contact'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -61,7 +64,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     get    "login"   => "users/sessions#new",         as: :new_user_session
     post   "login"   => "users/sessions#create",      as: :user_session
-    delete "signout" => "users/sessions#destroy",     as: :destroy_user_session
+      
+      get "signout" => "users/sessions#destroy", as: :destroy_user_session
     
     get    "signup"  => "users/registrations#new",    as: :new_user_registration
     post   "signup"  => "users/registrations#create", as: :user_registration
